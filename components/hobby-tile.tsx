@@ -23,7 +23,7 @@ export function HobbyTile({
 }: HobbyTileProps) {
   https: return (
     <div className={cn("space-y-3", className)} {...props}>
-      <div className="relative overflow-hidden rounded-md ">
+      <div className="relative overflow-hidden rounded-md">
         <Image
           // src={hobby.imageURL}
           // src={readingImage}
@@ -36,14 +36,6 @@ export function HobbyTile({
             aspectRatio === "portrait" ? "aspect-[3/4]" : "aspect-square"
           )}
         />
-        <div className="absolute top-0 left-0 w-full h-full text-white bg-black bg-opacity-50 flex flex-col items-center justify-center transition-opacity opacity-0 hover:opacity-100">
-          <h3 className="font-medium leading-none">{hobby.name}</h3>
-          <p className="text-sm text-muted-foreground">{hobby.description}</p>
-        </div>
-        {/* <div className="absolute top-0 left-0 w-full h-full flex flex-col justify-center items-center  space-y-1">
-          <h3 className="font-medium leading-none">{hobby.name}</h3>
-          <p className="text-sm text-muted-foreground">{hobby.description}</p>
-        </div> */}
       </div>
 
       <div className="space-y-1">
