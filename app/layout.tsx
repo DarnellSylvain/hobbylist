@@ -1,12 +1,25 @@
-import { ThemeProvider } from "@/components/theme-provider";
+import { Inter as FontSans } from "next/font/google";
+import localFont from "next/font/local";
+
 import "@/styles/globals.css";
-import { Inter } from "next/font/google";
+import { ThemeProvider } from "@/components/theme-provider";
 import { TailwindIndicator } from "@/components/tailwind-indicator";
-
-const inter = Inter({ subsets: ["latin"] });
-
 import type { Metadata } from "next";
 import { siteConfig } from "@/config/site";
+import { cn } from "@/lib/utils";
+
+// const inter = Inter({ subsets: ["latin"] });
+
+const fontSans = FontSans({
+  subsets: ["latin"],
+  variable: "--font-sans",
+});
+
+// Font files can be colocated inside of `pages`
+const fontHeading = localFont({
+  src: "../assets/fonts/CalSans-SemiBold.woff2",
+  variable: "--font-heading",
+});
 
 export const metadata: Metadata = {
   title: {
@@ -32,7 +45,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head />
-      <body className={inter.className}>
+      <body
+        className={cn(
+          "font-sans antialiased",
+          // inter.className,
+          fontSans.variable,
+          fontHeading.variable
+        )}
+      >
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
           {children}
           <TailwindIndicator />
