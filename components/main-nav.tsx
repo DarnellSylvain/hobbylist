@@ -8,7 +8,7 @@ import { CommandMenu } from "./command-menu";
 
 export default function MainNav() {
   return (
-    <div className="container flex justify-between h-14 items-center">
+    <div className="container flex justify-between h-12 items-center  bg-opacity-0">
       <Link href="/" className="items-center space-x-2 flex">
         <Icons.logo />
         <span className="font-bold sm:inline-block">{siteConfig.name}</span>
@@ -16,17 +16,14 @@ export default function MainNav() {
 
       <div className="">
         <nav>
-          <Link href="/" className="px-4">
-            Home
-          </Link>
           <Link href="/blog" className="px-4">
-            Generator
+            Hobbies
           </Link>
           <Link href="/projects" className="px-4">
-            Briefs
+            Blog
           </Link>
           <Link href="/about" className="px-4">
-            Feedback
+            Community
           </Link>
           <Link href="/about" className="px-4">
             About
