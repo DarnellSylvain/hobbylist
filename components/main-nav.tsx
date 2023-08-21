@@ -32,7 +32,7 @@ export default function MainNav() {
       <NavigationMenu>
         <NavigationMenuList>
           <NavigationMenuItem className="">
-            <NavigationMenuTrigger className="bg-inherit hover:bg-inherit">
+            <NavigationMenuTrigger className="focus:bg-inherit hover:bg-inherit data-[active]:bg-inherit data-[state=open]:bg-inherit">
               Hobbies
             </NavigationMenuTrigger>
             <NavigationMenuContent>
@@ -49,15 +49,28 @@ export default function MainNav() {
               </ul>
             </NavigationMenuContent>
           </NavigationMenuItem>
-          <Link href="/projects" className="px-4">
-            Blog
-          </Link>
-          <Link href="/about" className="px-4">
-            Community
-          </Link>
-          <Link href="/about" className="px-4">
-            About
-          </Link>
+          <NavigationMenuItem>
+            <Link href="/blog" passHref legacyBehavior>
+              <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                Blog
+              </NavigationMenuLink>
+            </Link>
+          </NavigationMenuItem>
+
+          <NavigationMenuItem>
+            <Link href="/about" legacyBehavior passHref>
+              <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                Community
+              </NavigationMenuLink>
+            </Link>
+          </NavigationMenuItem>
+          <NavigationMenuItem>
+            <Link href="/about" legacyBehavior passHref>
+              <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                About
+              </NavigationMenuLink>
+            </Link>
+          </NavigationMenuItem>
         </NavigationMenuList>
       </NavigationMenu>
 
