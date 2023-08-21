@@ -37,6 +37,7 @@ export default function UserAuthForm({
 
   const [isLoading, setIsLoading] = React.useState(false);
   const [isGitHubLoading, setIsGitHubLoading] = React.useState(false);
+  const [isGoogleLoading, setIsGoogleLoading] = React.useState(false);
   const searchParams = useSearchParams();
   const pathname = usePathname();
 
@@ -91,22 +92,40 @@ export default function UserAuthForm({
           </span>
         </div>
       </div>
-      <button
-        type="button"
-        className={cn(buttonVariants({ variant: "outline" }))}
-        onClick={() => {
-          setIsGitHubLoading(true);
-          //   signIn("github");
-        }}
-        disabled={isLoading || isGitHubLoading}
-      >
-        {isGitHubLoading ? (
-          <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
-        ) : (
-          <Icons.gitHub className="mr-2 h-4 w-4" />
-        )}{" "}
-        Github
-      </button>
+      <div className="flex space-x-4">
+        <button
+          type="button"
+          className={cn("flex-1", buttonVariants({ variant: "outline" }))}
+          onClick={() => {
+            setIsGitHubLoading(true);
+            //   signIn("github");
+          }}
+          disabled={isLoading || isGitHubLoading || isGoogleLoading}
+        >
+          {isGitHubLoading ? (
+            <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
+          ) : (
+            <Icons.gitHub className="mr-2 h-4 w-4" />
+          )}{" "}
+          Github
+        </button>
+        <button
+          type="button"
+          className={cn("flex-1", buttonVariants({ variant: "outline" }))}
+          onClick={() => {
+            setIsGoogleLoading(true);
+            //   signIn("google");
+          }}
+          disabled={isLoading || isGoogleLoading || isGitHubLoading}
+        >
+          {isGoogleLoading ? (
+            <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
+          ) : (
+            <Icons.google className="mr-2 h-4 w-4" />
+          )}{" "}
+          Google
+        </button>
+      </div>
     </div>
   );
 }
