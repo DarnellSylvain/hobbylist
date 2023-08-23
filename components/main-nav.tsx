@@ -32,7 +32,7 @@ export default function MainNav() {
       <NavigationMenu>
         <NavigationMenuList>
           <NavigationMenuItem className="">
-            <NavigationMenuTrigger className="focus:bg-inherit hover:bg-inherit data-[active]:bg-inherit data-[state=open]:bg-inherit">
+            <NavigationMenuTrigger className="bg-inherit focus:bg-inherit hover:bg-inherit data-[active]:bg-inherit data-[state=open]:bg-inherit">
               Hobbies
             </NavigationMenuTrigger>
             <NavigationMenuContent>
@@ -81,7 +81,7 @@ export default function MainNav() {
             href="/login"
             className={cn(
               buttonVariants({ variant: "secondary", size: "lg" }),
-              "px-4"
+              "px-4 "
             )}
           >
             Sign in
