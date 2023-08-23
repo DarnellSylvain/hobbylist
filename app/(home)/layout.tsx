@@ -7,7 +7,6 @@ export default async function HomeLayout({
   children,
 }: {
   children: React.ReactNode;
-  modal?: React.ReactNode;
 }) {
   return (
     <div className="flex min-h-screen flex-col">

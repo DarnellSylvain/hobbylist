@@ -47,7 +47,7 @@ export default function Home() {
           ))}
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 gap-4 min-w-[220px] p-4 ">
-          {hobbies.map((hobby) => (
+          {/* {hobbies.map((hobby) => (
             <HobbyTile
               hobby={hobby}
               className="w-full max-w-[250px]"
@@ -55,7 +55,7 @@ export default function Home() {
               width={250}
               height={250}
             />
-          ))}
+          ))} */}
         </div>
       </main>
     </>
