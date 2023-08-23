@@ -3,11 +3,10 @@ import { SiteFooter } from "@/components/site-footer";
 
 import { navConfig } from "@/config/site";
 
-export default async function HomeLayout({
+export default async function HobbiesLayout({
   children,
 }: {
   children: React.ReactNode;
-  modal?: React.ReactNode;
 }) {
   return (
     <div className="flex min-h-screen flex-col">

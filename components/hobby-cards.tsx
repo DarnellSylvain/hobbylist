@@ -16,6 +16,7 @@ import {
 } from "./ui/card";
 import { Badge } from "./ui/badge";
 import { Icons } from "./icons";
+import Link from "next/link";
 
 interface HobbyCardProps extends React.HTMLAttributes<HTMLDivElement> {
   hobby: Hobby;
@@ -64,7 +65,16 @@ export function HobbyCard({
           ></Icons.heart>
         </div>
         <div className="">
-          <h4 className="font-bold leading-none pt-2 px-4">{hobby.name}</h4>
+          <Link
+            key={hobby.name}
+            href={`hobbies/${hobby.name.toLowerCase().replace(/\s+/g, "-")}`}
+            legacyBehavior
+            passHref
+          >
+            <h4 className="font-bold leading-none pt-2 px-4 cursor-pointer">
+              {hobby.name}
+            </h4>
+          </Link>
         </div>
       </CardHeader>
 

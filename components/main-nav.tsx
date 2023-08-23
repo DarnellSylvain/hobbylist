@@ -33,8 +33,6 @@ interface MainNavProps {
 export default function MainNav({ items, children }: MainNavProps) {
   const segment = useSelectedLayoutSegment();
 
-  console.log("segment", segment);
-
   return (
     <div className="container flex justify-between h-12 items-center ">
       <Link href="/" className="items-center space-x-2 flex">
@@ -55,7 +53,7 @@ export default function MainNav({ items, children }: MainNavProps) {
                     <ListItem
                       key={hobby.name}
                       title={hobby.name}
-                      href={`/hobby/${hobby.name
+                      href={`/hobbies/${hobby.name
                         .toLowerCase()
                         .replace(/\s+/g, "-")}`}
                     >
