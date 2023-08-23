@@ -8,3 +8,14 @@ export type SiteConfig = {
     github: string;
   };
 };
+
+export type NavItem = {
+  title: string;
+  href: string;
+};
+
+export type MainNavItem = NavItem;
+
+export type NavConfig = {
+  mainNav: MainNavItem[];
+};

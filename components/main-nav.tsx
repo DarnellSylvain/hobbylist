@@ -4,6 +4,7 @@ import { hobbies } from "@/data/hobby";
 
 import React from "react";
 import Link from "next/link";
+import { useSelectedLayoutSegment } from "next/navigation";
 import { buttonVariants } from "./ui/button";
 import { Icons } from "./icons";
 import { siteConfig } from "@/config/site";
@@ -20,10 +21,21 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
+import { MainNavItem } from "@/types";
+import { ScrollArea } from "./ui/scroll-area";
 
-export default function MainNav() {
+interface MainNavProps {
+  items?: MainNavItem[];
+  children?: React.ReactNode;
+}
+
+export default function MainNav({ items, children }: MainNavProps) {
+  const segment = useSelectedLayoutSegment();
+
+  console.log("segment", segment);
+
   return (
-    <div className="container flex justify-between h-12 items-center  bg-opacity-0">
+    <div className="container flex justify-between h-12 items-center ">
       <Link href="/" className="items-center space-x-2 flex">
         <Icons.logo />
         <span className="font-bold sm:inline-block">{siteConfig.name}</span>
@@ -32,45 +44,45 @@ export default function MainNav() {
       <NavigationMenu>
         <NavigationMenuList>
           <NavigationMenuItem className="">
-            <NavigationMenuTrigger className="bg-inherit focus:bg-inherit hover:bg-inherit data-[active]:bg-inherit data-[state=open]:bg-inherit">
+            <NavigationMenuTrigger className="bg-inherit text-foreground/60 focus:bg-inherit hover:bg-inherit data-[active]:text-foreground data-[state=open]:text-foreground data-[active]:bg-inherit data-[state=open]:bg-inherit">
               Hobbies
             </NavigationMenuTrigger>
             <NavigationMenuContent>
-              <ul className="grid gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
-                {hobbies.map((hobby) => (
-                  <ListItem
-                    key={hobby.name}
-                    title={hobby.name}
-                    href={`/hobby/${hobby.name}`}
-                  >
-                    {hobby.description}
-                  </ListItem>
-                ))}
-              </ul>
+              <ScrollArea className=" h-96">
+                <ul className="grid gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
+                  {hobbies.map((hobby) => (
+                    <ListItem
+                      key={hobby.name}
+                      title={hobby.name}
+                      href={`/hobby/${hobby.name
+                        .toLowerCase()
+                        .replace(/\s+/g, "-")}`}
+                    >
+                      {hobby.description}
+                    </ListItem>
+                  ))}
+                </ul>
+              </ScrollArea>
             </NavigationMenuContent>
           </NavigationMenuItem>
-          <NavigationMenuItem>
-            <Link href="/blog" passHref legacyBehavior>
-              <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                Blog
-              </NavigationMenuLink>
-            </Link>
-          </NavigationMenuItem>
 
-          <NavigationMenuItem>
-            <Link href="/about" legacyBehavior passHref>
-              <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                Community
-              </NavigationMenuLink>
-            </Link>
-          </NavigationMenuItem>
-          <NavigationMenuItem>
-            <Link href="/about" legacyBehavior passHref>
-              <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                About
-              </NavigationMenuLink>
-            </Link>
-          </NavigationMenuItem>
+          {items?.map((item) => (
+            <NavigationMenuItem key={item.title}>
+              <Link href={item.href} legacyBehavior passHref>
+                <NavigationMenuLink
+                  className={cn(
+                    "",
+                    item.href.startsWith(`/${segment}`)
+                      ? "text-foreground bg-secondary/90"
+                      : "text-foreground/60",
+                    navigationMenuTriggerStyle()
+                  )}
+                >
+                  {item.title}
+                </NavigationMenuLink>
+              </Link>
+            </NavigationMenuItem>
+          ))}
         </NavigationMenuList>
       </NavigationMenu>
 
@@ -78,13 +90,13 @@ export default function MainNav() {
         <CommandMenu />
         <nav>
           <Link
-            href="/login"
+            href="/register"
             className={cn(
               buttonVariants({ variant: "secondary", size: "lg" }),
               "px-4 "
             )}
           >
-            Sign in
+            Join Hobby List!
           </Link>
         </nav>
         <ModeToggle />
