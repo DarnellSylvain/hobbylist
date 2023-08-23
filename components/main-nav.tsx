@@ -41,7 +41,7 @@ export default function MainNav({ items, children }: MainNavProps) {
         <span className="font-bold sm:inline-block">{siteConfig.name}</span>
       </Link>
 
-      <NavigationMenu>
+      <NavigationMenu className="hidden sm:block">
         <NavigationMenuList>
           <NavigationMenuItem className="">
             <NavigationMenuTrigger className="bg-inherit text-foreground/60 focus:bg-inherit hover:bg-inherit data-[active]:text-foreground data-[state=open]:text-foreground data-[active]:bg-inherit data-[state=open]:bg-inherit">

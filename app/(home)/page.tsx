@@ -5,7 +5,7 @@ import { hobbies } from "@/data/hobby";
 export default function Home() {
   return (
     <>
-      <div className="p-0 flex flex-col items-center gap-4 text-center ">
+      <div className="p-0 flex flex-col items-center gap-4 text-center">
         {/* <div className="flex flex-col justify-end  h-96 w-full overflow-hidden">
           <Image
             src="https://images.unsplash.com/photo-1533991310801-340302384c22?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80"
@@ -27,16 +27,20 @@ export default function Home() {
           </p>
         </section>
       </div>
-      <main className="flex min-h-full flex-col justify-center items-center">
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 min-w-[220px] p-4 ">
+      <main className="container min-h-full flex-col justify-center items-center space-y-3 px-2 ">
+        <h1 className="text-3xl font-bold font-heading  self-start px-4">
+          Hobbies
+        </h1>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 gap-4 min-w-[220px] p-4 ">
           {hobbies.map((hobby) => (
             <HobbyTile
               key={hobby.name}
               hobby={hobby}
-              className="w-full max-w-[250px]"
-              aspectRatio="square"
+              className="w-full max-w-[320px]"
+              aspectRatio="video"
               width={250}
-              height={250}
+              height={150}
             />
           ))}
         </div>
