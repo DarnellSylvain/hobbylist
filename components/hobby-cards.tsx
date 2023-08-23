@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 
 // import image from assets
@@ -13,6 +15,7 @@ import {
   CardHeader,
 } from "./ui/card";
 import { Badge } from "./ui/badge";
+import { Icons } from "./icons";
 
 interface HobbyCardProps extends React.HTMLAttributes<HTMLDivElement> {
   hobby: Hobby;
@@ -30,7 +33,13 @@ export function HobbyCard({
   ...props
 }: HobbyCardProps) {
   return (
-    <Card className={cn("relative space-y-2  mx-auto", className)} {...props}>
+    <Card
+      className={cn(
+        "relative space-y-2  mx-auto hover:drop-shadow-xl transition-all",
+        className
+      )}
+      {...props}
+    >
       <CardHeader className="relative p-0">
         {" "}
         <Image
@@ -47,11 +56,13 @@ export function HobbyCard({
               : "aspect-square"
           )}
         />
-        {/* <div className="space-y-1 w-full h-full transition-all flex flex-col justify-center items-center absolute top-0 left-0 text-white py-2 px-4 group-hover:hidden">
-          <h3 className="font-semibold text-2xl leading-none shadow-2xl bg-black p-4 bg-opacity-60 rounded-lg">
-            {hobby.name}
-          </h3>
-        </div> */}
+        <div className=" transition-all absolute top-0 right-0 py-2 px-4">
+          <Icons.heart
+            onClick={() => console.log("clicked")}
+            // fill="white"
+            className="text-white"
+          ></Icons.heart>
+        </div>
         <div className="">
           <h4 className="font-bold leading-none pt-2 px-4">{hobby.name}</h4>
         </div>
@@ -61,8 +72,8 @@ export function HobbyCard({
         {hobby.description}
       </CardDescription>
       <CardFooter className="p-4 pt-1">
-        <div>
-          <p className="text-xs">3265 Members</p>
+        <div className="w-full flex ">
+          <p className="text-xs ml-auto">3265 Members</p>
         </div>
       </CardFooter>
 
