@@ -23,6 +23,7 @@ import {
 } from "@/components/ui/navigation-menu";
 import { MainNavItem } from "@/types";
 import { ScrollArea } from "./ui/scroll-area";
+import { QuickModeToggle } from "./quick-mode-toggle";
 
 interface MainNavProps {
   items?: MainNavItem[];
@@ -41,7 +42,7 @@ export default function MainNav({ items, children }: MainNavProps) {
         <span className="font-bold sm:inline-block">{siteConfig.name}</span>
       </Link>
 
-      <NavigationMenu className="hidden sm:block">
+      <NavigationMenu className="hidden md:block">
         <NavigationMenuList>
           <NavigationMenuItem className="">
             <NavigationMenuTrigger className="bg-inherit text-foreground/60 focus:bg-inherit hover:bg-inherit data-[active]:text-foreground data-[state=open]:text-foreground data-[active]:bg-inherit data-[state=open]:bg-inherit">
@@ -99,7 +100,7 @@ export default function MainNav({ items, children }: MainNavProps) {
             Join Hobby List!
           </Link>
         </nav>
-        <ModeToggle />
+        <QuickModeToggle />
       </div>
     </div>
   );

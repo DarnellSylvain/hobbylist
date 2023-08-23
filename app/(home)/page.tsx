@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { HobbyTile } from "@/components/hobby-tile";
 import { hobbies } from "@/data/hobby";
+import { HobbyCard } from "@/components/hobby-cards";
 
 export default function Home() {
   return (
@@ -34,13 +35,25 @@ export default function Home() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 gap-4 min-w-[220px] p-4 ">
           {hobbies.map((hobby) => (
-            <HobbyTile
+            <HobbyCard
               key={hobby.name}
               hobby={hobby}
               className="w-full max-w-[320px]"
               aspectRatio="video"
               width={250}
               height={150}
+            />
+          ))}
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 gap-4 min-w-[220px] p-4 ">
+          {hobbies.map((hobby) => (
+            <HobbyTile
+              key={hobby.name}
+              hobby={hobby}
+              className="w-full max-w-[250px]"
+              aspectRatio="square"
+              width={250}
+              height={250}
             />
           ))}
         </div>
